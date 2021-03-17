@@ -8,7 +8,7 @@ const adminUsers = config.adminUsers;
 
 bot.on('text', (msg) => {
     const id = msg.from.id;
-    msg.reply.text('$:'+msg.text);
+    //msg.reply.text('$:'+msg.text);
     if(adminUsers.indexOf(id) < 0){
         msg.reply.text('You are not admin!');
         return;
@@ -20,7 +20,7 @@ bot.on('text', (msg) => {
         args = words.slice(1, len);
         
     } 
-    console.log('args:'+args);
+    //console.log('args:'+args);
 
     const shell = spawn(words[0],args).on('error', function( err ){ 
         		msg.reply.text('error while executing:'+words[0]);
@@ -30,15 +30,15 @@ bot.on('text', (msg) => {
     if(shell){
     
     	shell.stdout.on('data', (data) => {
-        	msg.reply.text(`stdout:\n ${data}`);
+        	msg.reply.text(`${data}`);
     	});
     
     	shell.stderr.on('data', (data) => {
-        	msg.reply.text(`stderr: ${data}`);
+        	msg.reply.text(`${data}`);
     	});
     
     	shell.on('close', (code) => {
-        	msg.reply.text(`shell exited with code ${code}`);
+        	//msg.reply.text(`shell exited with code ${code}`);
     	});
     }
 
