@@ -20,7 +20,7 @@ bot.on('text', (msg) => {
         args = words.slice(1, len);
         
     } 
-    //console.log('args:'+args);
+    console.log('args:'+args);
 
     const shell = spawn(words[0],args).on('error', function( err ){ 
         		msg.reply.text('error while executing:'+words[0]);
